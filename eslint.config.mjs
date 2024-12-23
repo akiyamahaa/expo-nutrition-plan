@@ -74,6 +74,7 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react/display-name': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
+      'import/no-cycle': ['error', { maxDepth: 1 }],
     },
   },
 ]

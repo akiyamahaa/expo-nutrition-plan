@@ -1,10 +1,16 @@
-import RootStack from '@/navigation'
-import { NavigationContainer } from '@react-navigation/native'
+import React from 'react'
+import { Provider } from 'react-redux'
+// import {PersistGate} from 'redux-persist/integration/react';
+import { store } from './src/redux/store'
+import RootNavigator from './src/routes/RootNavigator'
 
-export default function App() {
+const App = () => {
   return (
-    <NavigationContainer>
-      <RootStack />
-    </NavigationContainer>
+    <Provider store={store}>
+      {/* <PersistGate loading={null} persistor={persistor}>
+      </PersistGate> */}
+      <RootNavigator />
+    </Provider>
   )
 }
+export default App

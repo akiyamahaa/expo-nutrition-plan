@@ -1,21 +1,19 @@
 import React, { useState, useMemo } from 'react'
 import { View, Text, ImageBackground, TouchableOpacity, StatusBar, ScrollView } from 'react-native'
-import { Authentication } from '../../../styles'
+import { Authentication } from '../../../styles/Authentication'
 import { Button, Container, Spacing, Input } from '../../../components'
 import images from '@/images'
 
 import { RouteName } from '../../../routes'
-import { SH } from '../../../utils'
-import { useTheme } from '@react-navigation/native'
+import { Colors, SH } from '../../../utils'
 import { useTranslation } from 'react-i18next'
 
-const LoginScreen = (props) => {
-  const { Colors } = useTheme()
+const SignUpScreen = (props: any) => {
   const Authentications = useMemo(() => Authentication(Colors), [Colors])
   const { navigation } = props
-  const { t } = useTranslation()
   const [inputMobile, setInputMobile] = useState('')
   const [inputPassword, setInputpassword] = useState('')
+  const { t } = useTranslation()
 
   return (
     <Container>
@@ -27,29 +25,29 @@ const LoginScreen = (props) => {
       />
       <ScrollView
         keyboardShouldPersistTaps="handled"
-        contentContainerStyle={Authentications.ScrollViewStyles}
+        // contentContainerStyle={Authentications.ScrollViewStyles}
       >
         <View style={Authentications.setbgMainView}>
           <View style={Authentications.setbgimageView}>
             <ImageBackground
-              source={images.login}
+              source={images.signUp}
               resizeMode="cover"
               style={Authentications.setbgimage}
             >
               <View style={Authentications.loginSignUpTab}>
+                <TouchableOpacity onPress={() => navigation.navigate(RouteName.LOGIN_SCREEN)}>
+                  <Text style={[Authentications.loginSignUpText]}>{t('Login_Text')}</Text>
+                </TouchableOpacity>
                 <TouchableOpacity>
                   <Text style={[Authentications.loginSignUpText, Authentications.activeBorder]}>
-                    {t('Login_Text')}
+                    {t('Sign_Up')}
                   </Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate(RouteName.SIGNUP_SCREEN)}>
-                  <Text style={Authentications.loginSignUpText}>{t('Sign_Up')}</Text>
                 </TouchableOpacity>
               </View>
               <View style={Authentications.loginSignUpTextView}>
                 <Text style={Authentications.imageText}>{t('Welcome_Back')}</Text>
                 <Text style={[Authentications.imageText, Authentications.TextBold]}>
-                  {t('Sign_In')}
+                  {t('Sign_Up')}
                 </Text>
               </View>
             </ImageBackground>
@@ -62,7 +60,6 @@ const LoginScreen = (props) => {
               onChangeText={setInputMobile}
               value={inputMobile}
               inputType="numeric"
-              keyboardType="numeric"
               maxLength={10}
               autoCompleteType="tel"
               containerStyle={Authentications.PassWordStyle}
@@ -76,14 +73,10 @@ const LoginScreen = (props) => {
               secureTextEntry={true}
               containerStyle={Authentications.PassWordStyle}
             />
-            <Spacing space={SH(5)} />
-            <TouchableOpacity onPress={() => navigation.navigate(RouteName.FORGOT_PASSWORD)}>
-              <Text style={Authentications.forgotText}>{t('Forgot_Password')}</Text>
-            </TouchableOpacity>
-            <Spacing space={SH(20)} />
+            <Spacing space={SH(50)} />
             <View style={Authentications.buttonView}>
               <Button
-                title={t('Login_Text')}
+                title={t('Sign_Up')}
                 buttonStyle={Authentications.nextButton}
                 onPress={() => navigation.navigate(RouteName.OTP_VERYFY_SCREEN)}
               />
@@ -95,4 +88,4 @@ const LoginScreen = (props) => {
     </Container>
   )
 }
-export default LoginScreen
+export default SignUpScreen

@@ -9,20 +9,18 @@ import {
   Lottie,
 } from '../../../components'
 import { TrainingStyle } from '../../../styles'
-import { SF, SH, trainingFocusData, widthPercent } from '../../../utils'
+import { Colors, SF, SH, trainingFocusData, widthPercent } from '../../../utils'
 import { useTranslation } from 'react-i18next'
-import { useTheme } from '@react-navigation/native'
 import images from '@/images'
 import { RouteName } from '../../../routes'
 
 const TrainingTab = (props) => {
   const { navigation } = props
   const { t } = useTranslation()
-  const { Colors } = useTheme()
   const TrainingStyles = useMemo(() => TrainingStyle(Colors), [Colors])
 
   return (
-    <Container backgroundColor={Colors.backgroundColor}>
+    <Container backgroundColor={Colors.background}>
       <ScrollView>
         <View style={TrainingStyles.Container}>
           <View style={[TrainingStyles.Pad20, TrainingStyles.FlexRowJuSPBTn]}>
@@ -70,7 +68,7 @@ const TrainingTab = (props) => {
                 style={TrainingStyles.BtnBoxStyle}
                 onPress={() => navigation.navigate(RouteName.WORKOUT_LIST)}
               >
-                <Lottie source={images.play_btn} Lottiewidthstyle={TrainingStyles.PlayBtnStyle} />
+                {/* <Lottie source={images.play_btn} Lottiewidthstyle={TrainingStyles.PlayBtnStyle} /> */}
               </TouchableOpacity>
             </View>
           </View>

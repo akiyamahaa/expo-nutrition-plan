@@ -1,21 +1,19 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { View, Text, ImageBackground, TouchableOpacity, StatusBar, ScrollView } from 'react-native'
-import { Authentication } from '../../../styles/Authentication'
-import { Button, Container, Spacing, Input } from '../../../components'
+import { Authentication } from '@/styles'
+import { Button, Container, Spacing, Input } from '@/components'
 import images from '@/images'
 
-import { RouteName } from '../../../routes'
-import { SH } from '../../../utils'
-import { useTheme } from '@react-navigation/native'
+import { RouteName } from '@/routes'
+import { Colors, SH } from '@/utils'
 import { useTranslation } from 'react-i18next'
 
-const SignUpScreen = (props) => {
-  const { Colors } = useTheme()
+const LoginScreen = (props: any) => {
   const Authentications = useMemo(() => Authentication(Colors), [Colors])
   const { navigation } = props
+  const { t } = useTranslation()
   const [inputMobile, setInputMobile] = useState('')
   const [inputPassword, setInputpassword] = useState('')
-  const { t } = useTranslation()
 
   return (
     <Container>
@@ -27,29 +25,29 @@ const SignUpScreen = (props) => {
       />
       <ScrollView
         keyboardShouldPersistTaps="handled"
-        contentContainerStyle={Authentications.ScrollViewStyles}
+        // contentContainerStyle={Authentications.ScrollViewStyles}
       >
         <View style={Authentications.setbgMainView}>
           <View style={Authentications.setbgimageView}>
             <ImageBackground
-              source={images.signUp}
+              source={images.login}
               resizeMode="cover"
               style={Authentications.setbgimage}
             >
               <View style={Authentications.loginSignUpTab}>
-                <TouchableOpacity onPress={() => navigation.navigate(RouteName.LOGIN_SCREEN)}>
-                  <Text style={[Authentications.loginSignUpText]}>{t('Login_Text')}</Text>
-                </TouchableOpacity>
                 <TouchableOpacity>
                   <Text style={[Authentications.loginSignUpText, Authentications.activeBorder]}>
-                    {t('Sign_Up')}
+                    {t('Login_Text')}
                   </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate(RouteName.SIGNUP_SCREEN)}>
+                  <Text style={Authentications.loginSignUpText}>{t('Sign_Up')}</Text>
                 </TouchableOpacity>
               </View>
               <View style={Authentications.loginSignUpTextView}>
                 <Text style={Authentications.imageText}>{t('Welcome_Back')}</Text>
                 <Text style={[Authentications.imageText, Authentications.TextBold]}>
-                  {t('Sign_Up')}
+                  {t('Sign_In')}
                 </Text>
               </View>
             </ImageBackground>
@@ -62,10 +60,18 @@ const SignUpScreen = (props) => {
               onChangeText={setInputMobile}
               value={inputMobile}
               inputType="numeric"
-              keyboardType="numeric"
               maxLength={10}
-              autoCompleteType="tel"
               containerStyle={Authentications.PassWordStyle}
+              autoFocus={undefined}
+              secureTextEntry={undefined}
+              inputContainerStyle={undefined}
+              numberOfLines={undefined}
+              titleStyle={undefined}
+              inputStyle={undefined}
+              inputprops={undefined}
+              onBlur={undefined}
+              onFocus={undefined}
+              onEndEditing={undefined}
             />
             <Spacing space={SH(20)} />
             <Input
@@ -75,11 +81,26 @@ const SignUpScreen = (props) => {
               value={inputPassword}
               secureTextEntry={true}
               containerStyle={Authentications.PassWordStyle}
+              autoFocus={undefined}
+              maxLength={undefined}
+              inputContainerStyle={undefined}
+              numberOfLines={undefined}
+              titleStyle={undefined}
+              inputStyle={undefined}
+              inputprops={undefined}
+              onBlur={undefined}
+              onFocus={undefined}
+              inputType={undefined}
+              onEndEditing={undefined}
             />
-            <Spacing space={SH(50)} />
+            <Spacing space={SH(5)} />
+            <TouchableOpacity onPress={() => navigation.navigate(RouteName.FORGOT_PASSWORD)}>
+              <Text style={Authentications.forgotText}>{t('Forgot_Password')}</Text>
+            </TouchableOpacity>
+            <Spacing space={SH(20)} />
             <View style={Authentications.buttonView}>
               <Button
-                title={t('Sign_Up')}
+                title={t('Login_Text')}
                 buttonStyle={Authentications.nextButton}
                 onPress={() => navigation.navigate(RouteName.OTP_VERYFY_SCREEN)}
               />
@@ -91,4 +112,4 @@ const SignUpScreen = (props) => {
     </Container>
   )
 }
-export default SignUpScreen
+export default LoginScreen

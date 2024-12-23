@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
-import {SF, SH, SW, Fonts, Colors} from '../../utils';
+import { StyleSheet } from 'react-native'
+import { SF, SH, SW, Fonts, Colors } from '../../utils'
 
-export default Authentication = Colors =>
+export default Authentication = (Colors) =>
   StyleSheet.create({
     textcenterview: {
       flexDirection: 'column',
@@ -231,4 +231,4 @@ export default Authentication = Colors =>
       flexDirection: 'row',
       alignItems: 'center',
     },
-  });
+  })

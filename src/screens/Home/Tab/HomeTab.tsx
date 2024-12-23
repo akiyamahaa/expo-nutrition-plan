@@ -15,21 +15,19 @@ import {
   Spacing,
   VectoreIcons,
   HomeCommonFlatList,
-} from '../../../components'
-import { HomeStyle } from '../../../styles'
-import { SF, SH, ForBeginnersData, advanceProgrameData } from '../../../utils'
+} from '@/components'
+import { HomeStyle } from '@/styles'
+import { SF, SH, ForBeginnersData, advanceProgrameData, Colors } from '@/utils'
 import { useTranslation } from 'react-i18next'
-import { useTheme } from '@react-navigation/native'
 import images from '@/images'
 
-const HomeTab = (props) => {
+const HomeTab = (props: any) => {
   const { t } = useTranslation()
-  const { Colors } = useTheme()
   //   const {navigation} = props;
   const HomeStyles = useMemo(() => HomeStyle(Colors), [Colors])
   const [searchInput, setSearchInput] = useState('')
   return (
-    <Container backgroundColor={Colors.backgroundColor}>
+    <Container backgroundColor={Colors.background}>
       <ScrollView>
         <View style={HomeStyles.Container}>
           <View style={HomeStyles.HomeHeaderBox}>
@@ -58,7 +56,7 @@ const HomeTab = (props) => {
                 inputStyle={HomeStyles.HomeSearchInput}
                 placeholder={t('Search_Label')}
                 inputContainerStyle={HomeStyles.InputContainer}
-                onChangeText={(inputSearch) => setSearchInput(inputSearch)}
+                onChangeText={setSearchInput}
                 value={searchInput}
               />
             </View>

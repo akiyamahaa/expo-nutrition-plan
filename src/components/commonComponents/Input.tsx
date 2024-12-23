@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import propTypes from 'prop-types'
 import { View, StyleSheet } from 'react-native'
 import { SF, SH, SW, Fonts, Colors } from '../../utils'
 import { Input } from 'react-native-elements'
@@ -27,7 +26,7 @@ function Inputs({
   onEndEditing,
   inputContainerStyle,
   numberOfLines,
-}) {
+}: any) {
   const colorsset = Colors
   const styles = useMemo(
     () =>
@@ -47,7 +46,6 @@ function Inputs({
           color: colorsset.black_text_color,
           paddingVertical: SH(0),
           paddingHorizontal: SH(10),
-          fontFamily: Fonts.Poppins_Regular,
           borderRadius: SH(7),
           borderWidth: SH(1),
           ...inputStyle,
@@ -105,36 +103,36 @@ function Inputs({
   )
 }
 
-Inputs.defaultProps = {
-  title: '',
-  placeholder: '',
-  titleStyle: {},
-  inputStyle: {},
-  onChangeText: () => {},
-  onFocus: () => {},
-  onBlur: () => {},
-  value: '',
-  textprops: {},
-  inputprops: {},
-  inputType: null,
-  autoCompleteType: '',
-  onEndEditing: () => {},
-}
+// Inputs.defaultProps = {
+//   title: '',
+//   placeholder: '',
+//   titleStyle: {},
+//   inputStyle: {},
+//   onChangeText: () => {},
+//   onFocus: () => {},
+//   onBlur: () => {},
+//   value: '',
+//   textprops: {},
+//   inputprops: {},
+//   inputType: null,
+//   autoCompleteType: '',
+//   onEndEditing: () => {},
+// }
 
-Inputs.propTypes = {
-  title: propTypes.string,
-  autoCompleteType: propTypes.string,
-  placeholder: propTypes.string,
-  titleStyle: propTypes.shape({}),
-  inputStyle: propTypes.shape({}),
-  onChangeText: propTypes.func,
-  value: propTypes.string,
-  textprops: propTypes.object,
-  inputprops: propTypes.object,
-  onFocus: propTypes.func,
-  onBlur: propTypes.func,
-  inputType: propTypes.any,
-  onEndEditing: propTypes.func,
-}
+// Inputs.propTypes = {
+//   title: propTypes.string,
+//   autoCompleteType: propTypes.string,
+//   placeholder: propTypes.string,
+//   titleStyle: propTypes.shape({}),
+//   inputStyle: propTypes.shape({}),
+//   onChangeText: propTypes.func,
+//   value: propTypes.string,
+//   textprops: propTypes.object,
+//   inputprops: propTypes.object,
+//   onFocus: propTypes.func,
+//   onBlur: propTypes.func,
+//   inputType: propTypes.any,
+//   onEndEditing: propTypes.func,
+// }
 
 export default Inputs
